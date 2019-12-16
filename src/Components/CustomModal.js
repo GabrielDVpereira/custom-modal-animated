@@ -9,19 +9,18 @@ const screenHeight = Dimensions.get("window").height;
 export default function Modal() {
   const newAnimatedValue = new Animated.Value(900);
   const [top, setTop] = useState(newAnimatedValue);
-  const { state, dispatch } = useContext(Context);
-  console.log(state);
-
+  const { modal, dispatch } = useContext(Context);
+  
   useEffect(() => {
     toggleModal();
   }, [state]);
 
   function toggleModal() {
-    if (state.action === "openModal") {
+    if (modal.action === "openModal") {
       Animated.spring(top, {
         toValue: 174
       }).start();
-    } else if (state.action === "closeModal") {
+    } else if (modal.action === "closeModal") {
       Animated.spring(top, {
         toValue: screenHeight
       }).start();
