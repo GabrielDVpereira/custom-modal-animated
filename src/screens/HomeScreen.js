@@ -11,7 +11,7 @@ import styled from "styled-components";
 import Modal from "../Components/CustomModal";
 
 export default function Home() {
-  const { state, dispatch } = useContext(Context);
+  const { modal, dispatch } = useContext(Context);
   const [scale, setScale] = useState(new Animated.Value(1));
   const [opacity, setOpacity] = useState(new Animated.Value(1));
 
@@ -25,10 +25,10 @@ export default function Home() {
 
   useEffect(() => {
     toggleModal();
-  }, [state]);
+  }, [modal]);
 
   function toggleModal() {
-    if (state.action === "openModal") {
+    if (modal.action === "openModal") {
       Animated.timing(scale, {
         toValue: 0.9,
         duration: 300,
@@ -42,7 +42,7 @@ export default function Home() {
       StatusBar.setBarStyle("light-content", true);
     }
 
-    if (state.action === "closeModal") {
+    if (modal.action === "closeModal") {
       Animated.timing(scale, {
         toValue: 1,
         duration: 300,
