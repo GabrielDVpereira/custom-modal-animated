@@ -10,19 +10,19 @@ export default function Modal() {
   const newAnimatedValue = new Animated.Value(900);
   const [top, setTop] = useState(newAnimatedValue);
   const { modal, dispatch } = useContext(Context);
-  
+
   useEffect(() => {
     toggleModal();
-  }, [state]);
+  }, [modal]);
 
   function toggleModal() {
     if (modal.action === "openModal") {
       Animated.spring(top, {
-        toValue: 174
+        toValue: 174,
       }).start();
     } else if (modal.action === "closeModal") {
       Animated.spring(top, {
-        toValue: screenHeight
+        toValue: screenHeight,
       }).start();
     }
   }
@@ -37,7 +37,7 @@ export default function Modal() {
           top: 120,
           left: "50%",
           marginLeft: -22,
-          zIndex: 1
+          zIndex: 1,
         }}
       >
         <CloseView>
